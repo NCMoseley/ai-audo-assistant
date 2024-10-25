@@ -1,0 +1,16 @@
+node_modules
+# Keep environment variables out of version control
+.vscode/
+.env*
+.env.local
+.DS_Store
+.next/
+.next
+test.js
+test2.js
+test3.js
+mocks.js
+.DS_Store
+*.mov
+*.mp3
+setKey.js
