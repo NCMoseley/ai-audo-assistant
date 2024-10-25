@@ -7,6 +7,9 @@
     // "default_icon": "icons/not-recording.png"
     "default_popup": "index.html"
   },
+  "background": {
+    "service_worker": "service-worker.js"
+  },
   "permissions": ["storage", "tabCapture", "offscreen", "scripting"],
   // "host_permissions": ["<all_urls>"],
   "host_permissions": ["http://*/*", "https://*/*"],
