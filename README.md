@@ -1,19 +1,50 @@
-# chrome.tabCapture recorder
+# React + TypeScript + Vite
 
-This sample demonstrates how to use the [`chrome.tabCapture`](https://developer.chrome.com/docs/extensions/reference/tabCapture/) API to record in the background, using a service worker and [offscreen document](https://developer.chrome.com/docs/extensions/reference/offscreen/).
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Overview
+Currently, two official plugins are available:
 
-In this sample, clicking the action button starts recording the current tab in an offscreen document. After 30 seconds, or once the action button is clicked again, the recording ends and is saved as a download.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Implementation Notes
+## Expanding the ESLint configuration
 
-See the [Audio recording and screen capture guide](https://developer.chrome.com/docs/extensions/mv3/screen_capture/#audio-and-video-offscreen-doc) for more implementation details.
+If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-## Running this extension
+- Configure the top-level `parserOptions` property like this:
 
-1. Clone this repository.
-2. Load this directory in Chrome as an [unpacked extension](https://developer.chrome.com/docs/extensions/mv3/getstarted/development-basics/#load-unpacked).
-3. Pin the extension from the extension menu.
-4. Click the extension's action icon to start recording.
-5. Click the extension's action again to stop recording.
+```js
+export default tseslint.config({
+  languageOptions: {
+    // other options...
+    parserOptions: {
+      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      tsconfigRootDir: import.meta.dirname,
+    },
+  },
+})
+```
+
+- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
+- Optionally add `...tseslint.configs.stylisticTypeChecked`
+- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+
+```js
+// eslint.config.js
+import react from 'eslint-plugin-react'
+
+export default tseslint.config({
+  // Set the react version
+  settings: { react: { version: '18.3' } },
+  plugins: {
+    // Add the react plugin
+    react,
+  },
+  rules: {
+    // other rules...
+    // Enable its recommended rules
+    ...react.configs.recommended.rules,
+    ...react.configs['jsx-runtime'].rules,
+  },
+})
+```
