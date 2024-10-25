@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect } from "react";
 import viteLogo from "/vite.svg";
-import { startRecording, stopRecording } from "./actions/offscreen";
+// @ts-expect-error: no declaration file
+import { startRecording, stopRecording } from "./actions/offscreen.js";
 import "./App.css";
 
 function App() {
