@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import viteLogo from "/vite.svg";
+import { startRecording, stopRecording } from "./actions/offscreen";
 import "./App.css";
 
 function App() {
@@ -14,12 +15,12 @@ function App() {
     );
   }, []);
 
-  const startRecording = () => {
-    chrome.runtime.sendMessage({ type: "start-recording" });
+  const startRecording = async () => {
+    await startRecording();
   };
 
-  const stopRecording = () => {
-    chrome.runtime.sendMessage({ type: "stop-recording" });
+  const stopRecording = async () => {
+    await stopRecording();
   };
 
   return (
