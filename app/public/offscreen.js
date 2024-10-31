@@ -12,7 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
 chrome.runtime.onMessage.addListener(async (message) => {
   if (message.target === 'offscreen') {
     switch (message.type) {
@@ -31,7 +30,7 @@ chrome.runtime.onMessage.addListener(async (message) => {
 let recorder;
 let data = [];
 
-export async function startRecording(streamId) {
+async function startRecording(streamId) {
   console.log('startRecording:', streamId);
   if (recorder?.state === 'recording') {
     throw new Error('Called startRecording while recording is in progress.');
@@ -73,7 +72,7 @@ export async function startRecording(streamId) {
   window.location.hash = 'recording';
 }
 
-export async function stopRecording() {
+async function stopRecording() {
   recorder.stop();
 
   // Stopping the tracks makes sure the recording icon in the tab is removed.

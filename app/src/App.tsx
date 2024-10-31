@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import viteLogo from "/vite.svg";
 // @ts-expect-error: no declaration file
 import { startRecording, stopRecording } from "./actions/offscreen.js";
@@ -7,15 +7,6 @@ import "./App.css";
 
 function App() {
   // const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    chrome.runtime.sendMessage(
-      { type: "greeting", message: "Hello from Vite!" },
-      (response) => {
-        console.log("Response from background:", response);
-      }
-    );
-  }, []);
 
   const startRecording = async () => {
     await startRecording();

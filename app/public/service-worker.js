@@ -12,13 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-  if (message.type === 'greeting') {
-    console.log(message.message); // "Hello from Vite!"
-    sendResponse({ response: 'Hello from background!' });
-  }
-});
-
 chrome.action.onClicked.addListener(async (tab) => {
   const existingContexts = await chrome.runtime.getContexts({});
   let recording = false;
