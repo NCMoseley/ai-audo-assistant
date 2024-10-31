@@ -1,15 +1,29 @@
 {
-  "name": "AI-Audo-Assistant",
+  "name": "Ai-Audo-Assistant",
   "description": "Records the current tab in an offscreen document.",
-  "version": "1",
+  "version": "0.0.1",
   "manifest_version": 3,
   "minimum_chrome_version": "116",
   "action": {
     "default_icon": "icons/not-recording.png"
-    // "default_popup": "popup.html"
   },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["offscreen.js"]
+    }
+  ],
   "background": {
     "service_worker": "service-worker.js"
   },
-  "permissions": ["storage", "tabCapture", "offscreen"]
+  "permissions": ["tabCapture", "offscreen", "scripting", "tabs", "activeTab"],
+  "host_permissions": [
+    "<all_urls>" 
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["icons/pause.png", "icons/stop.png", "icons/play.png", "icons/recording.png", "icons/not-recording.png"],
+      "matches": ["<all_urls>"]
+    }
+  ]
 }
